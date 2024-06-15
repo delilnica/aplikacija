@@ -11,16 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.behavior.HideBottomViewOnScrollBehavior;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -74,9 +69,6 @@ public class nastavitve extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("nastavitve", MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 if (!up_ime.getText().toString().isEmpty()) {
-                    // Creating a shared pref object with a file name "MySharedPref" in private mode
-
-                    // write all the data entered by the user in SharedPreference and apply
                     myEdit.putString("up_ime", up_ime.getText().toString());
                     myEdit.putString("up_geslo", up_geslo.getText().toString());
                     myEdit.apply();
@@ -121,7 +113,6 @@ public class nastavitve extends AppCompatActivity {
             json.put("geslo", geslo);
             //json.put("zaseben", zaseben);
 
-            // Starts the query
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
             writer.write(json.toString());

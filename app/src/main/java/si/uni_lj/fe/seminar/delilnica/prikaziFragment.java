@@ -15,10 +15,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import static si.uni_lj.fe.seminar.delilnica.s_to_s.*;
@@ -91,12 +88,9 @@ public class prikaziFragment extends AppCompatActivity {
             conn.setRequestProperty("Authorization", zeton);
             //Toast.makeText(getApplicationContext(), "zeton: " + zeton,Toast.LENGTH_LONG).show();
         }
-        conn.connect();	// Starts the query
-
-        // blokira, dokler ne dobi odgovora
+        conn.connect();
         status_koda = conn.getResponseCode();
 
-        // Convert the InputStream into a string
         String responseAsString = convertStreamToString(conn.getInputStream());
         return responseAsString;
     }

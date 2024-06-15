@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -14,17 +12,12 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -37,8 +30,6 @@ public class dodajFragment extends AppCompatActivity {
     String urlStoritve = "http://192.168.1.40:81/fragment.php";
     String urlFragmenta = urlStoritve + "?o=";
     int status_koda = 0;
-
-    //TextView vsebina, ime, datum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +45,7 @@ public class dodajFragment extends AppCompatActivity {
         Button nazaj = (Button) findViewById(R.id.dod_nazaj);
 
         SharedPreferences sh = getSharedPreferences("nastavitve", MODE_PRIVATE);
-        String zeton   = sh.getString("zeton", "");
+        String zeton = sh.getString("zeton", "");
 
         gumb_dodaj.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +87,6 @@ public class dodajFragment extends AppCompatActivity {
         });
     }
 
-    public void showAlertDialogButtonClicked(View view, String naslov, String sporocilo) {
-        // setup the alert builder
-
-    }
-
     private String connect(String urlStoritve, String ime, String besedilo, boolean zaseben, String zeton) throws IOException {
         URL url = new URL(urlStoritve);
 
@@ -121,7 +107,6 @@ public class dodajFragment extends AppCompatActivity {
             json.put("besedilo", besedilo);
             json.put("zaseben", zaseben ? 1 : 0);
 
-            // Starts the query
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
             writer.write(json.toString());

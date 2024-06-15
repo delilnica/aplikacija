@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    //Button submit, ustvari;
     EditText oznaka;
 
     @Override
