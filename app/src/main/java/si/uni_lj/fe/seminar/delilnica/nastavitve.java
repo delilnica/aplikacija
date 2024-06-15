@@ -71,10 +71,10 @@ public class nastavitve extends AppCompatActivity {
         nazaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences("nastavitve", MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPreferences.edit();
                 if (!up_ime.getText().toString().isEmpty()) {
                     // Creating a shared pref object with a file name "MySharedPref" in private mode
-                    SharedPreferences sharedPreferences = getSharedPreferences("nastavitve", MODE_PRIVATE);
-                    SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
                     // write all the data entered by the user in SharedPreference and apply
                     myEdit.putString("up_ime", up_ime.getText().toString());
@@ -94,6 +94,10 @@ public class nastavitve extends AppCompatActivity {
                         //e.printStackTrace();
                         Toast.makeText(getApplicationContext(), "Napaka " + status_koda, Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    myEdit.putString("zeton", "");
+                    myEdit.apply();
+                    //Toast.makeText(getApplicationContext(), "Ponastavljen." ,Toast.LENGTH_LONG).show();
                 }
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
