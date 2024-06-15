@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Delilnica</string>
+    <string name="URL_base_storitve">http://192.168.1.40:8000/</string>
+
+    <string name="napis_preostali_cas">"Preostali čas: "</string>
+    <string name="napis_stevilo_zadetkov">"Število zadetkov: "</string>
+    <string name="napis_menu_nova_igra">Nova igra</string>
+    <string name="napis_menu_spremeni_tezavnost">Spremeni težavnost</string>
+    <string name="napis_menu_lahka_tezavnost">Lahka</string>
+    <string name="napis_menu_srednja_tezavnost">Srednja</string>
+    <string name="napis_menu_tezka_tezavnost">Težka</string>
+    <string name="napis_izhod">Izhod</string>
+    <string name="napis_OK">OK</string>
+    <string name="napis_konec_igre">"Igre je konec!"</string>
+    <string name="napaka_omrezje">Napaka pri uporabi omrežja.</string>
+    <string name="rest_rezultat_dodan">Rezultat dodan.</string>
+    <string name="rest_nepricakovan_odgovor">Nepričakovan odgovor strežnika.</string>
+    <string name="napaka_storitev">Napaka pri komunikaciji s strežnikom.</string>
+    <string name="URL_rel_lestvica">lestvice/</string>
+    <string name="URL_rel_vpis_igre">igre/</string>
+    <string name="napis_lestvica">Lestvica</string>
+</resources>
