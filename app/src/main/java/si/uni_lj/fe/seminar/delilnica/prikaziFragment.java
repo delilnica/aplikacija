@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import static si.uni_lj.fe.seminar.delilnica.s_to_s.*;
 
 public class prikaziFragment extends AppCompatActivity {
     String urlStoritve = "http://192.168.1.40:81/fragment.php?o=";
@@ -100,24 +101,4 @@ public class prikaziFragment extends AppCompatActivity {
         return responseAsString;
     }
 
-    private String convertStreamToString(InputStream is) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-
-        String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append('\n');
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
-    }
 }

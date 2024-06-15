@@ -30,6 +30,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static si.uni_lj.fe.seminar.delilnica.s_to_s.*;
+
 public class dodajFragment extends AppCompatActivity {
     String odgovor;
     String urlStoritve = "http://192.168.1.40:81/fragment.php";
@@ -143,26 +145,5 @@ public class dodajFragment extends AppCompatActivity {
         }
 
         return _koda;
-    }
-
-    private String convertStreamToString(InputStream is) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-
-        String line;
-        try {
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append('\n');
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
     }
 }
