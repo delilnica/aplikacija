@@ -23,7 +23,6 @@ import java.net.URL;
 import static si.uni_lj.fe.seminar.delilnica.s_to_s.*;
 
 public class nastavitve extends AppCompatActivity {
-    String urlPrijave = "http://192.168.1.40:81/login.php";
     int status_koda = 0;
 
     @Override
@@ -36,14 +35,17 @@ public class nastavitve extends AppCompatActivity {
         TextView up_ime = (TextView) findViewById(R.id.up_ime);
         TextView up_geslo = (TextView) findViewById(R.id.up_geslo);
         TextView pocisti = (TextView) findViewById(R.id.pocisti);
+        TextView api_ip = (TextView) findViewById(R.id.api_ip);
 
         Button nazaj = (Button) findViewById(R.id.nazaj);
 
         SharedPreferences sh = getSharedPreferences("nastavitve", MODE_PRIVATE);
         String tmp_ime   = sh.getString("up_ime", "");
         String tmp_geslo = sh.getString("up_geslo", "");
+        String tmp_ip = sh.getString("api_ip", "");
         up_ime.setText(tmp_ime);
         up_geslo.setText(tmp_geslo);
+        api_ip.setText(tmp_ip);
 
         pocisti.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +80,8 @@ public class nastavitve extends AppCompatActivity {
                     String tmp_geslo = sh.getString("up_geslo", "");
 
                     try {
+                        String api_ip = sh.getString("api_ip", "");
+                        String urlPrijave = "http://"+api_ip+":81/login.php";
                         String zeton = pridobi_zeton(urlPrijave, tmp_ime, tmp_geslo);
                         myEdit.putString("zeton", zeton);
                         myEdit.apply();
@@ -91,6 +95,8 @@ public class nastavitve extends AppCompatActivity {
                     myEdit.apply();
                     //Toast.makeText(getApplicationContext(), "Ponastavljen." ,Toast.LENGTH_LONG).show();
                 }
+                myEdit.putString("api_ip", api_ip.getText().toString());
+                myEdit.apply();
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
             }

@@ -26,9 +26,6 @@ import java.net.URL;
 import static si.uni_lj.fe.seminar.delilnica.s_to_s.*;
 
 public class dodajFragment extends AppCompatActivity {
-    String odgovor;
-    String urlStoritve = "http://192.168.1.40:81/fragment.php";
-    String urlFragmenta = urlStoritve + "?o=";
     int status_koda = 0;
 
     @Override
@@ -51,6 +48,8 @@ public class dodajFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    String api_ip = sh.getString("api_ip", "");
+                    String urlStoritve = "http://"+api_ip+":81/fragment.php";
                     String oznaka = connect(urlStoritve, ime.getText().toString(), besedilo.getText().toString(), false, zeton);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(dodajFragment.this);

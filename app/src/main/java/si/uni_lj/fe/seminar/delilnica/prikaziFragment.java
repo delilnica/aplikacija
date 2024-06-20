@@ -21,7 +21,6 @@ import java.net.URL;
 import static si.uni_lj.fe.seminar.delilnica.s_to_s.*;
 
 public class prikaziFragment extends AppCompatActivity {
-    String urlStoritve = "http://192.168.1.40:81/fragment.php?o=";
     int status_koda = 0;
 
     TextView vsebina, ime, datum;
@@ -44,6 +43,8 @@ public class prikaziFragment extends AppCompatActivity {
         String zeton   = sh.getString("zeton", "");
 
         try {
+            String api_ip = sh.getString("api_ip", "");
+            String urlStoritve = "http://"+api_ip+":81/fragment.php?o=";
             String odgovor = connect(urlStoritve + oznaka, zeton);
             String _ime, _datum, _besedilo;
             try {
